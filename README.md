@@ -1,71 +1,80 @@
-# D_ID Python Package
+Creating user-friendly documentation for a Python library on GitHub involves creating a README.md file in the repository. Here's a template for your documentation:
 
-The `D_ID` Python package is designed to interact with the D-ID API, allowing you to access various functionalities such as retrieving actor lists, creating text-to-video clips, and more.
+```markdown
+# D-ID Python API Wrapper
+
+This Python library allows you to interact with the D-ID API easily. You can use it to create text-to-video clips and retrieve clip information, among other things.
 
 ## Installation
 
-You can install the package via pip:
+You can install the `did-api` module using `pip`:
 
 ```bash
-pip install d-id
+pip install did-api
 ```
 
 ## Getting Started
 
-1. Import the `Clips` class from the `D_ID` package:
+1. Obtain your D-ID API Key from [D-ID Studio](https://studio.d-id.com/account-settings).
 
-    ```python
-    from D_ID.D_ID import Clips
-    ```
-
-2. Initialize the `Clips` class with your D-ID API key:
-
-    ```python
-    api_key = "<your_api_key>"
-    clip = Clips(api_key)
-    ```
-
-## Usage Examples
-
-### Get Actor List
+2. Import the library and initialize it with your API Key:
 
 ```python
-actor_list = clip.get_actor_list()
-print(actor_list)
+from did_api import Clips
+
+api_key = "your_api_key_here"
+d_id = Clips(api_key)
 ```
 
-This function retrieves a list of actors available in the D-ID API.
+## Creating a Text-to-Video Clip
 
-### Create Text-to-Video Clip
+To create a text-to-video clip, use the `create_text_to_video_clip` method:
 
 ```python
-text = "This is the text you want to convert into a video clip."
-presenter_id = "amy-jcwCkr1grs"
-driver_id = "uM00QMwJ9x"
-microsoft_voice_id = "en-US-JennyNeural"
-
-result = clip.create_text_to_video_clip(text, presenter_id, driver_id, microsoft_voice_id)
-print(result)
+text = "Your text here"
+result = d_id.create_text_to_video_clip(text)
 ```
 
-This function creates a video clip from the provided text using the specified presenter, driver, and Microsoft voice.
+This function takes the following optional parameters:
+- `presenter_id` (default: 'amy-jcwCkr1grs')
+- `driver_id` (default: 'uM00QMwJ9x')
+- `voice_provider_name` (default: 'microsoft')
+- `voice_id` (default: 'en-US-JennyNeural')
+- `WEBHOOK_URL` (default: None)
+- `background_color` (default: '#ffffff')
+- `extra_data` (default: {})
 
-### Additional Functions
+The `result` variable will contain the API response, including information about the created clip.
 
-You can also use other functions provided by the `Clips` class to interact with the D-ID API, such as retrieving driver lists, presenter details, clips, and more.
+## Retrieving Clip Information
 
-[comment]: <> ## Documentation
+You can retrieve clip information using the `get_clip_by_id` method:
 
-[comment]: <> For detailed documentation on each function and its parameters, please refer to the inline comments in the `Clips` class definition within the package code.
+```python
+clip_id = "your_clip_id_here"
+clip_info = d_id.get_clip_by_id(clip_id)
+```
+
+The `clip_info` variable will contain the API response, providing details about the specified clip.
+
+## Examples
+
+Here are some examples of how to use this library:
+
+```python
+# Create a text-to-video clip
+text = "Hello, D-ID!"
+result = d_id.create_text_to_video_clip(text) 
+"result => {'id': 'clip_id', 'created_at': '2023-09-06T21:45:50.298Z', 'object': 'clip', 'status': 'created'}"
+
+# Get information about a specific clip
+clip_id = "your_clip_id_here"
+clip_info = d_id.get_clip_by_id(clip_id)
+```
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This library is provided under the [MIT License](LICENSE).
 
-## Contributing
-
-If you would like to contribute to this project, please open an issue or submit a pull request.
-
-## Support
-
-If you encounter any issues or have questions about using this package, please [open an issue](https://github.com/Circuit-Minds/d-id/issues) on the GitHub repository.
+For more information about the D-ID API, please refer to the [official documentation](https://docs.d-id.com/).
+```
