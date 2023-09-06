@@ -17,7 +17,7 @@ pip install did-api
 2. Import the library and initialize it with your API Key:
 
 ```python
-from did_api import Clips
+from D_ID import Clips
 
 api_key = "your_api_key_here"
 d_id = Clips(api_key)
