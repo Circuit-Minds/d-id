@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='did-api',
-    version='0.0.3',
+    version='0.0.6',
     description='D-ID API Python Library',
     author= 'Shubham Gupta',
     author_email='gshubham533@gmail.com',
