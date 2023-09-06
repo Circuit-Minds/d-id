@@ -1,6 +1,3 @@
-Creating user-friendly documentation for a Python library on GitHub involves creating a README.md file in the repository. Here's a template for your documentation:
-
-```markdown
 # D-ID Python API Wrapper
 
 This Python library allows you to interact with the D-ID API easily. You can use it to create text-to-video clips and retrieve clip information, among other things.
@@ -77,4 +74,3 @@ clip_info = d_id.get_clip_by_id(clip_id)
 This library is provided under the [MIT License](LICENSE).
 
 For more information about the D-ID API, please refer to the [official documentation](https://docs.d-id.com/).
-```
